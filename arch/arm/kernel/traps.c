@@ -37,11 +37,8 @@
 
 #include "signal.h"
 
-<<<<<<< HEAD
 #include <trace/events/exception.h>
 
-static const char *handler[]= { "prefetch abort", "data abort", "address exception", "interrupt" };
-=======
 static const char *handler[]= {
 	"prefetch abort",
 	"data abort",
@@ -49,7 +46,6 @@ static const char *handler[]= {
 	"interrupt",
 	"undefined instruction",
 };
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 void *vectors_page;
 
@@ -416,12 +412,9 @@ asmlinkage void __exception do_undefinstr(struct pt_regs *regs)
 	if (call_undef_hook(regs, instr) == 0)
 		return;
 
-<<<<<<< HEAD
 	trace_undef_instr(regs, (void *)pc);
 
-=======
 die_sig:
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 #ifdef CONFIG_DEBUG_USER
 	if (user_debug & UDBG_UNDEFINED) {
 		printk(KERN_INFO "%s (%d): undefined instruction: pc=%p\n",

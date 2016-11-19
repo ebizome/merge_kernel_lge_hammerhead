@@ -12,7 +12,6 @@
  * which is the most efficient. For ARMv6+, we emit a pair of exclusive
  * accesses instead.
  */
-<<<<<<< HEAD
 static inline void
 __mutex_fastpath_lock(atomic_t *count, void (*fail_fn)(atomic_t *))
 {
@@ -122,7 +121,4 @@ __mutex_fastpath_trylock(atomic_t *count, int (*fail_fn)(atomic_t *))
 }
 
 #endif
-=======
-#include <asm-generic/mutex-xchg.h>
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 #endif

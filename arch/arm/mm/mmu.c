@@ -1248,7 +1248,6 @@ static void __init devicemaps_init(struct machine_desc *mdesc)
 	if (mdesc->map_io)
 		mdesc->map_io();
 	fill_pmd_gaps();
-<<<<<<< HEAD
 
 	if (use_user_accessible_timers()) {
 		/*
@@ -1263,8 +1262,6 @@ static void __init devicemaps_init(struct machine_desc *mdesc)
 			create_mapping(&map);
 		}
 	}
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 	/*
 	 * Finally flush the caches and tlb to ensure that we're in a

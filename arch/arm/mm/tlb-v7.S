@@ -49,14 +49,11 @@ ENTRY(v7wbi_flush_user_tlb_range)
 	orr	r0, r3, r0, lsl #PAGE_SHIFT	@ Create initial MVA
 #endif
 	mov	r1, r1, lsl #PAGE_SHIFT
-1:
-<<<<<<< HEAD
 #ifdef CONFIG_ARCH_MSM8X60
 	ALT_SMP(mcr	p15, 0, r0, c8, c3, 3)	@ TLB invalidate U MVA (shareable)
-=======
-#ifdef CONFIG_ARM_ERRATA_720789
+1:
+#elif defined CONFIG_ARM_ERRATA_720789
 	ALT_SMP(mcr	p15, 0, r0, c8, c3, 3)	@ TLB invalidate U MVA all ASID (shareable)
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 #else
 	ALT_SMP(mcr	p15, 0, r0, c8, c3, 1)	@ TLB invalidate U MVA (shareable)
 #endif
@@ -83,14 +80,11 @@ ENTRY(v7wbi_flush_kern_tlb_range)
 	mov	r1, r1, lsr #PAGE_SHIFT
 	mov	r0, r0, lsl #PAGE_SHIFT
 	mov	r1, r1, lsl #PAGE_SHIFT
-1:
-<<<<<<< HEAD
 #ifdef CONFIG_ARCH_MSM8X60
 	ALT_SMP(mcr	p15, 0, r0, c8, c3, 3)	@ TLB invalidate U MVA (shareable)
-=======
-#ifdef CONFIG_ARM_ERRATA_720789
+1:
+#elif define CONFIG_ARM_ERRATA_720789
 	ALT_SMP(mcr	p15, 0, r0, c8, c3, 3)	@ TLB invalidate U MVA all ASID (shareable)
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 #else
 	ALT_SMP(mcr	p15, 0, r0, c8, c3, 1)	@ TLB invalidate U MVA (shareable)
 #endif
