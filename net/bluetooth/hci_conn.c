@@ -44,7 +44,11 @@
 
 #include <net/bluetooth/bluetooth.h>
 #include <net/bluetooth/hci_core.h>
+<<<<<<< HEAD
 #include <net/bluetooth/l2cap.h>
+=======
+#include <net/bluetooth/smp.h>
+>>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 struct hci_conn *hci_le_connect(struct hci_dev *hdev, __u16 pkt_type,
 				bdaddr_t *dst, __u8 sec_level, __u8 auth_type,
@@ -393,6 +397,7 @@ void hci_le_start_enc(struct hci_conn *conn, __le16 ediv, __u8 rand[8],
 }
 EXPORT_SYMBOL(hci_le_start_enc);
 
+<<<<<<< HEAD
 void hci_le_ltk_reply(struct hci_conn *conn, u8 ltk[16])
 {
 	struct hci_dev *hdev = conn->hdev;
@@ -409,6 +414,8 @@ void hci_le_ltk_reply(struct hci_conn *conn, u8 ltk[16])
 }
 EXPORT_SYMBOL(hci_le_ltk_reply);
 
+=======
+>>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 void hci_le_ltk_neg_reply(struct hci_conn *conn)
 {
 	struct hci_dev *hdev = conn->hdev;
@@ -980,6 +987,13 @@ int hci_conn_security(struct hci_conn *conn, __u8 sec_level, __u8 auth_type)
 {
 	BT_DBG("conn %p %d %d", conn, sec_level, auth_type);
 
+<<<<<<< HEAD
+=======
+	if (conn->type == LE_LINK)
+		return smp_conn_security(conn, sec_level);
+
+	/* For sdp we don't need the link key. */
+>>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	if (sec_level == BT_SECURITY_SDP)
 		return 1;
 

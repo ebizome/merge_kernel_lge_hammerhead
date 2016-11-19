@@ -209,6 +209,7 @@ static inline bool virtqueue_enable_cb(struct virtqueue *vq)
 	return vq->vq_ops->enable_cb(vq);
 }
 
+<<<<<<< HEAD
 /**
  * virtqueue_enable_cb_delayed - restart callbacks after disable_cb.
  * @vq: the struct virtqueue we're talking about.
@@ -226,6 +227,13 @@ static inline bool virtqueue_enable_cb_delayed(struct virtqueue *vq)
 {
 	return vq->vq_ops->enable_cb_delayed(vq);
 }
+=======
+unsigned virtqueue_enable_cb_prepare(struct virtqueue *vq);
+
+bool virtqueue_poll(struct virtqueue *vq, unsigned);
+
+bool virtqueue_enable_cb_delayed(struct virtqueue *vq);
+>>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 /**
  * virtqueue_detach_unused_buf - detach first unused buffer
@@ -274,7 +282,11 @@ struct virtio_device {
 	void *priv;
 };
 
-#define dev_to_virtio(dev) container_of(dev, struct virtio_device, dev)
+static inline struct virtio_device *dev_to_virtio(struct device *_dev)
+{
+	return container_of(_dev, struct virtio_device, dev);
+}
+
 int register_virtio_device(struct virtio_device *dev);
 void unregister_virtio_device(struct virtio_device *dev);
 

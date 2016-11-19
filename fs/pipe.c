@@ -389,7 +389,12 @@ pipe_read(struct kiocb *iocb, const struct iovec *_iov,
 			const struct pipe_buf_operations *ops = buf->ops;
 			void *addr;
 			size_t chars = buf->len, remaining;
+<<<<<<< HEAD
 			int error, atomic, offset;
+=======
+			int error, atomic;
+			int offset;
+>>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 			if (chars > total_len)
 				chars = total_len;
@@ -873,6 +878,9 @@ static int
 pipe_rdwr_open(struct inode *inode, struct file *filp)
 {
 	int ret = -ENOENT;
+
+	if (!(filp->f_mode & (FMODE_READ|FMODE_WRITE)))
+		return -EINVAL;
 
 	mutex_lock(&inode->i_mutex);
 

@@ -733,6 +733,19 @@ static void dma_cache_maint_page(struct page *page, unsigned long offset,
 	pfn = page_to_pfn(page) + offset / PAGE_SIZE;
 	offset %= PAGE_SIZE;
 
+<<<<<<< HEAD
+=======
+static void dma_cache_maint_page(struct page *page, unsigned long offset,
+	size_t size, enum dma_data_direction dir,
+	void (*op)(const void *, size_t, int))
+{
+	unsigned long pfn;
+	size_t left = size;
+
+	pfn = page_to_pfn(page) + offset / PAGE_SIZE;
+	offset %= PAGE_SIZE;
+
+>>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	/*
 	 * A single sg entry may refer to multiple physically contiguous
 	 * pages.  But we still need to process highmem pages individually.

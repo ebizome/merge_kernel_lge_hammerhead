@@ -35,8 +35,11 @@ again:
 		struct iphdr _iph;
 ip:
 		iph = skb_header_pointer(skb, nhoff, sizeof(_iph), &_iph);
+<<<<<<< HEAD
 
 		/* CVE-2013-4348 issue : make sure iph->ihl is not zero ... */
+=======
+>>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 		if (!iph || iph->ihl < 5)
 			return false;
 
@@ -135,8 +138,8 @@ ipv6:
 	if (poff >= 0) {
 		__be32 *ports, _ports;
 
-		nhoff += poff;
-		ports = skb_header_pointer(skb, nhoff, sizeof(_ports), &_ports);
+		ports = skb_header_pointer(skb, nhoff + poff,
+					   sizeof(_ports), &_ports);
 		if (ports)
 			flow->ports = *ports;
 	}
