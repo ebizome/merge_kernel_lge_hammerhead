@@ -1028,15 +1028,6 @@ int dpm_suspend_end(pm_message_t state)
 	int error = dpm_suspend_late(state);
 	if (error)
 		return error;
-<<<<<<< HEAD
-
-	error = dpm_suspend_noirq(state);
-	if (error) {
-		dpm_resume_early(state);
-		return error;
-	}
-
-=======
 
 	error = dpm_suspend_noirq(state);
 	if (error) {
@@ -1044,7 +1035,6 @@ int dpm_suspend_end(pm_message_t state)
 		return error;
 	}
 
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	return 0;
 }
 EXPORT_SYMBOL_GPL(dpm_suspend_end);
