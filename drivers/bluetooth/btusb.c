@@ -107,8 +107,6 @@ static struct usb_device_id btusb_table[] = {
 	/* Canyon CN-BTU1 with HID interfaces */
 	{ USB_DEVICE(0x0c10, 0x0000) },
 
-<<<<<<< HEAD
-=======
 	/* Broadcom BCM20702A0 */
 	{ USB_DEVICE(0x0489, 0xe042) },
 	{ USB_DEVICE(0x04ca, 0x2003) },
@@ -129,7 +127,6 @@ static struct usb_device_id btusb_table[] = {
 	{ USB_DEVICE(0x8087, 0x0a5a),
 	  .driver_info = BTUSB_INTEL_BOOT | BTUSB_BROKEN_ISOC },
 
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	{ }	/* Terminating entry */
 };
 
@@ -148,11 +145,8 @@ static struct usb_device_id blacklist_table[] = {
 	{ USB_DEVICE(0x04f2, 0xaff1), .driver_info = BTUSB_IGNORE },
 	{ USB_DEVICE(0x0930, 0x0215), .driver_info = BTUSB_IGNORE },
 	{ USB_DEVICE(0x0cf3, 0x3002), .driver_info = BTUSB_IGNORE },
-<<<<<<< HEAD
-=======
 	{ USB_DEVICE(0x0cf3, 0xe019), .driver_info = BTUSB_IGNORE },
 	{ USB_DEVICE(0x13d3, 0x3304), .driver_info = BTUSB_IGNORE },
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 	/* Atheros AR9285 Malbec with sflash firmware */
 	{ USB_DEVICE(0x03f0, 0x311d), .driver_info = BTUSB_IGNORE },
@@ -174,8 +168,6 @@ static struct usb_device_id blacklist_table[] = {
 	{ USB_DEVICE(0x0b05, 0x17d0), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x0cf3, 0x0036), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x0cf3, 0x3004), .driver_info = BTUSB_ATH3012 },
-<<<<<<< HEAD
-=======
 	{ USB_DEVICE(0x0cf3, 0x3008), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x0cf3, 0x311d), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x0cf3, 0x3121), .driver_info = BTUSB_ATH3012 },
@@ -192,7 +184,6 @@ static struct usb_device_id blacklist_table[] = {
 	{ USB_DEVICE(0x13d3, 0x3423), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x13d3, 0x3432), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x13d3, 0x3474), .driver_info = BTUSB_ATH3012 },
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 	/* Atheros AR5BBU12 with sflash firmware */
 	{ USB_DEVICE(0x0489, 0xe02c), .driver_info = BTUSB_IGNORE },
@@ -1082,12 +1073,9 @@ static int btusb_probe(struct usb_interface *intf,
 	hdev->destruct = btusb_destruct;
 	hdev->notify   = btusb_notify;
 
-<<<<<<< HEAD
 	hdev->owner = THIS_MODULE;
-=======
 	if (id->driver_info & BTUSB_INTEL_BOOT)
 		set_bit(HCI_QUIRK_RAW_DEVICE, &hdev->quirks);
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 	/* Interface numbers are hardcoded in the specification */
 	data->isoc = usb_ifnum_to_if(data->udev, 1);

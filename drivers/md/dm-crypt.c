@@ -757,13 +757,7 @@ static int crypt_convert(struct crypt_config *cc,
 		case -EBUSY:
 			wait_for_completion(&ctx->restart);
 			INIT_COMPLETION(ctx->restart);
-<<<<<<< HEAD
-			/* fall through*/
-		case -EINPROGRESS:
 			ctx->req = NULL;
-=======
-			this_cc->req = NULL;
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 			ctx->sector++;
 			continue;
 
@@ -1242,7 +1236,6 @@ static int crypt_decode_key(u8 *key, char *hex, unsigned int size)
 	return 0;
 }
 
-<<<<<<< HEAD
 /*
  * Encode key into its hex representation
  */
@@ -1257,10 +1250,7 @@ static void crypt_encode_key(char *hex, u8 *key, unsigned int size)
 	}
 }
 
-static void crypt_free_tfms(struct crypt_config *cc)
-=======
 static void crypt_free_tfms(struct crypt_config *cc, int cpu)
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 {
 	unsigned i;
 

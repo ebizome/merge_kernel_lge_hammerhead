@@ -66,11 +66,8 @@ static struct usb_device_id ath3k_table[] = {
 	{ USB_DEVICE(0x04F2, 0xAFF1) },
 	{ USB_DEVICE(0x0930, 0x0215) },
 	{ USB_DEVICE(0x0CF3, 0x3002) },
-<<<<<<< HEAD
-=======
 	{ USB_DEVICE(0x0CF3, 0xE019) },
 	{ USB_DEVICE(0x13d3, 0x3304) },
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 	/* Atheros AR9285 Malbec with sflash firmware */
 	{ USB_DEVICE(0x03F0, 0x311D) },
@@ -92,8 +89,6 @@ static struct usb_device_id ath3k_table[] = {
 	{ USB_DEVICE(0x0b05, 0x17d0) },
 	{ USB_DEVICE(0x0CF3, 0x0036) },
 	{ USB_DEVICE(0x0CF3, 0x3004) },
-<<<<<<< HEAD
-=======
 	{ USB_DEVICE(0x0CF3, 0x3008) },
 	{ USB_DEVICE(0x0CF3, 0x311D) },
 	{ USB_DEVICE(0x0cf3, 0x3121) },
@@ -110,7 +105,6 @@ static struct usb_device_id ath3k_table[] = {
 	{ USB_DEVICE(0x13d3, 0x3423) },
 	{ USB_DEVICE(0x13d3, 0x3432) },
 	{ USB_DEVICE(0x13d3, 0x3474) },
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 	/* Atheros AR5BBU12 with sflash firmware */
 	{ USB_DEVICE(0x0489, 0xE02C) },
@@ -146,8 +140,6 @@ static struct usb_device_id ath3k_blist_tbl[] = {
 	{ USB_DEVICE(0x0b05, 0x17d0), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x0CF3, 0x0036), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x0cf3, 0x3004), .driver_info = BTUSB_ATH3012 },
-<<<<<<< HEAD
-=======
 	{ USB_DEVICE(0x0cf3, 0x3008), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x0cf3, 0x311D), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x0cf3, 0x3121), .driver_info = BTUSB_ATH3012 },
@@ -168,7 +160,6 @@ static struct usb_device_id ath3k_blist_tbl[] = {
 	/* Atheros AR5BBU22 with sflash firmware */
 	{ USB_DEVICE(0x0489, 0xE03C), .driver_info = BTUSB_ATH3012 },
 	{ USB_DEVICE(0x0489, 0xE036), .driver_info = BTUSB_ATH3012 },
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 	{ }	/* Terminating entry */
 };
