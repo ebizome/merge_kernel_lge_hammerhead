@@ -396,15 +396,11 @@ static inline void xhci_cleanup_msix(struct xhci_hcd *xhci)
 {
 }
 
-<<<<<<< HEAD
-#endif /* CONFIG_PCI */
-=======
 static inline void xhci_msix_sync_irqs(struct xhci_hcd *xhci)
 {
 }
 
-#endif
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
+#endif /* CONFIG_PCI */
 
 static void compliance_mode_recovery(unsigned long arg)
 {

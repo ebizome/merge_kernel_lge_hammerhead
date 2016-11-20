@@ -1083,10 +1083,7 @@ void umount_tree(struct mount *mnt, int propagate, struct list_head *kill)
 		if (p->mnt_ns)
 			__mnt_make_shortterm(p);
 		p->mnt_ns = NULL;
-<<<<<<< HEAD
 		list_del_init(&p->mnt_child);
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 		if (mnt_has_parent(p)) {
 			p->mnt_parent->mnt_ghosts++;
 			dentry_reset_mounted(p->mnt_mountpoint);
@@ -1718,13 +1715,8 @@ static int do_remount(struct path *path, int flags, int mnt_flags,
 	else
 		err = do_remount_sb(sb, flags, data, 0);
 	if (!err) {
-<<<<<<< HEAD
-		br_write_lock(&vfsmount_lock);
-		mnt_flags |= mnt->mnt.mnt_flags & MNT_PROPAGATION_MASK;
-=======
 		br_write_lock(vfsmount_lock);
 		mnt_flags |= mnt->mnt.mnt_flags & ~MNT_USER_SETTABLE_MASK;
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 		mnt->mnt.mnt_flags = mnt_flags;
 		br_write_unlock(&vfsmount_lock);
 	}
@@ -2573,14 +2565,10 @@ SYSCALL_DEFINE2(pivot_root, const char __user *, new_root,
 	/* make sure we can reach put_old from new_root */
 	if (!is_path_reachable(real_mount(old.mnt), old.dentry, &new))
 		goto out4;
-<<<<<<< HEAD
-	br_write_lock(&vfsmount_lock);
-=======
 	/* make certain new is below the root */
 	if (!is_path_reachable(new_mnt, new.dentry, &root))
 		goto out4;
 	br_write_lock(vfsmount_lock);
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	detach_mnt(new_mnt, &parent_path);
 	detach_mnt(root_mnt, &root_parent);
 	/* mount old root on put_old */

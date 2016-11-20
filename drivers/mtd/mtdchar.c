@@ -1163,7 +1163,6 @@ static int mtdchar_mmap(struct file *file, struct vm_area_struct *vma)
 	struct mtd_file_info *mfi = file->private_data;
 	struct mtd_info *mtd = mfi->mtd;
 	struct map_info *map = mtd->priv;
-<<<<<<< HEAD
 	resource_size_t start, off;
 	unsigned long len, vma_len;
 
@@ -1188,8 +1187,6 @@ static int mtdchar_mmap(struct file *file, struct vm_area_struct *vma)
 		if (set_vm_offset(vma, off) < 0)
 			return -EINVAL;
 		vma->vm_flags |= VM_IO | VM_RESERVED;
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
         /* This is broken because it assumes the MTD device is map-based
 	   and that mtd->priv is a valid struct map_info.  It should be

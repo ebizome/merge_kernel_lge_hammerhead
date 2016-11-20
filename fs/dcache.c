@@ -2523,10 +2523,6 @@ static int prepend_path(const struct path *path,
 	bool slash = false;
 	int error = 0;
 
-<<<<<<< HEAD
-	br_read_lock(&vfsmount_lock);
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	while (dentry != root->dentry || vfsmnt != root->mnt) {
 		struct dentry * parent;
 
@@ -2564,11 +2560,6 @@ static int prepend_path(const struct path *path,
 	if (!error && !slash)
 		error = prepend(buffer, buflen, "/", 1);
 
-<<<<<<< HEAD
-out:
-	br_read_unlock(&vfsmount_lock);
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	return error;
 
 global_root:
@@ -2584,13 +2575,8 @@ global_root:
 	if (!slash)
 		error = prepend(buffer, buflen, "/", 1);
 	if (!error)
-<<<<<<< HEAD
-		error = is_mounted(vfsmnt) ? 1 : 2;
-	goto out;
-=======
 		error = real_mount(vfsmnt)->mnt_ns ? 1 : 2;
 	return error;
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 }
 
 /**

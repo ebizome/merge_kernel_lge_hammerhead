@@ -740,11 +740,8 @@ static int sleep_thread(struct fsg_common *common)
 	__set_current_state(TASK_RUNNING);
 	spin_lock_irq(&common->lock);
 	common->thread_wakeup_needed = 0;
-<<<<<<< HEAD
 	spin_unlock_irq(&common->lock);
-=======
 	smp_rmb();	/* ensure the latest bh->state is visible */
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	return rc;
 }
 

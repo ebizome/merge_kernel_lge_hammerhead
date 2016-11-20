@@ -270,12 +270,8 @@ static void dwc3_ep0_stall_and_restart(struct dwc3 *dwc)
 	dep->flags = DWC3_EP_ENABLED;
 
 	/* stall is always issued on EP0 */
-<<<<<<< HEAD
 	dep = dwc->eps[0];
-	__dwc3_gadget_ep_set_halt(dep, 1);
-=======
 	__dwc3_gadget_ep_set_halt(dep, 1, false);
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	dep->flags = DWC3_EP_ENABLED;
 	dwc->delayed_status = false;
 
@@ -465,17 +461,11 @@ static int dwc3_ep0_handle_feature(struct dwc3 *dwc,
 			dep = dwc3_wIndex_to_dep(dwc, wIndex);
 			if (!dep)
 				return -EINVAL;
-<<<<<<< HEAD
 
-			if (!set && (dep->flags & DWC3_EP_WEDGE))
-				return 0;
-
-			ret = __dwc3_gadget_ep_set_halt(dep, set);
-=======
 			if (set == 0 && (dep->flags & DWC3_EP_WEDGE))
 				break;
 			ret = __dwc3_gadget_ep_set_halt(dep, set, true);
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
+
 			if (ret)
 				return -EINVAL;
 			break;

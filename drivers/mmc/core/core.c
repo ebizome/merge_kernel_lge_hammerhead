@@ -3541,7 +3541,6 @@ int mmc_pm_notify(struct notifier_block *notify_block,
 	switch (mode) {
 	case PM_HIBERNATION_PREPARE:
 	case PM_SUSPEND_PREPARE:
-<<<<<<< HEAD
 		if (host->card && mmc_card_mmc(host->card)) {
 			mmc_claim_host(host);
 			err = mmc_stop_bkops(host->card);
@@ -3563,10 +3562,7 @@ int mmc_pm_notify(struct notifier_block *notify_block,
 		/* Wait for pending detect work to be completed */
 		if (!(host->caps & MMC_CAP_NEEDS_POLL))
 			flush_work(&host->detect.work);
-=======
 	case PM_RESTORE_PREPARE:
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
-
 		spin_lock_irqsave(&host->lock, flags);
 		host->rescan_disable = 1;
 		spin_unlock_irqrestore(&host->lock, flags);

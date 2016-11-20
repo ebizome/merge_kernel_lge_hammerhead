@@ -802,16 +802,9 @@ int usb_wwan_suspend(struct usb_serial *serial, pm_message_t message)
 
 	spin_lock_irq(&intfdata->susp_lock);
 	if (PMSG_IS_AUTO(message)) {
-<<<<<<< HEAD
-		spin_lock_irq(&intfdata->susp_lock);
-		b = intfdata->in_flight;
 		spin_unlock_irq(&intfdata->susp_lock);
 
-		if (b || pm_runtime_autosuspend_expiration(&serial->dev->dev))
-=======
-		if (intfdata->in_flight) {
-			spin_unlock_irq(&intfdata->susp_lock);
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
+		if (intfdata->in_flight || pm_runtime_autosuspend_expiration(&serial->dev->dev))
 			return -EBUSY;
 		}
 	}
@@ -866,20 +859,13 @@ int usb_wwan_resume(struct usb_serial *serial)
 	dbg("%s entered", __func__);
 
 	spin_lock_irq(&intfdata->susp_lock);
-<<<<<<< HEAD
 	intfdata->suspended = 0;
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	for (i = 0; i < serial->num_ports; i++) {
 		/* walk all ports */
 		port = serial->port[i];
 		portdata = usb_get_serial_port_data(port);
 
 		/* skip closed ports */
-<<<<<<< HEAD
-		if (!portdata->opened)
-			continue;
-=======
 		if (!portdata || !portdata->opened)
 			continue;
 
@@ -893,7 +879,6 @@ int usb_wwan_resume(struct usb_serial *serial)
 				err_count++;
 			}
 		}
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 		err = play_delayed(port);
 		if (err)
@@ -910,7 +895,6 @@ int usb_wwan_resume(struct usb_serial *serial)
 			usb_anchor_urb(urb, &portdata->submitted);
 			err = usb_submit_urb(urb, GFP_ATOMIC);
 			if (err < 0) {
-<<<<<<< HEAD
 				err("%s: Error %d for bulk URB[%d]:%p %d",
 				    __func__, err, j, urb, i);
 				usb_unanchor_urb(urb);
@@ -925,21 +909,6 @@ int usb_wwan_resume(struct usb_serial *serial)
 
 err_out:
 	return err;
-=======
-				err("%s: Error %d for bulk URB %d",
-				    __func__, err, i);
-				err_count++;
-			}
-		}
-	}
-	intfdata->suspended = 0;
-	spin_unlock_irq(&intfdata->susp_lock);
-
-	if (err_count)
-		return -EIO;
-
-	return 0;
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 }
 EXPORT_SYMBOL(usb_wwan_resume);
 #endif

@@ -1348,7 +1348,6 @@ int prepare_binprm(struct linux_binprm *bprm)
 	if (bprm->file->f_op == NULL)
 		return -EACCES;
 
-<<<<<<< HEAD
 	/* clear any previous set[ug]id data from a previous binary */
 	bprm->cred->euid = current_euid();
 	bprm->cred->egid = current_egid();
@@ -1372,9 +1371,6 @@ int prepare_binprm(struct linux_binprm *bprm)
 			bprm->cred->egid = inode->i_gid;
 		}
 	}
-=======
-	bprm_fill_uid(bprm);
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 	/* fill in binprm security blob */
 	retval = security_bprm_set_creds(bprm);

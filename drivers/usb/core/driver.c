@@ -534,7 +534,6 @@ int usb_match_one_id_intf(struct usb_device *dev,
 			  struct usb_host_interface *intf,
 			  const struct usb_device_id *id)
 {
-<<<<<<< HEAD
 	struct usb_host_interface *intf;
 	struct usb_device *dev;
 
@@ -548,10 +547,7 @@ int usb_match_one_id_intf(struct usb_device *dev,
 	if (!usb_match_device(dev, id))
 		return 0;
 
-	/* The interface class, subclass, protocol and number should never be
-=======
 	/* The interface class, subclass, and protocol should never be
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	 * checked for a match if the device class is Vendor Specific,
 	 * unless the match record specifies the Vendor ID. */
 	if (dev->descriptor.bDeviceClass == USB_CLASS_VENDOR_SPEC &&

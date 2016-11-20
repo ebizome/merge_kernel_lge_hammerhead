@@ -34,11 +34,8 @@ struct files_stat_struct files_stat = {
 	.max_files = NR_FILE
 };
 
-<<<<<<< HEAD
 DEFINE_LGLOCK(files_lglock);
 
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 /* SLAB cache for file structures */
 static struct kmem_cache *filp_cachep __read_mostly;
 
@@ -386,7 +383,6 @@ void put_filp(struct file *file)
 	}
 }
 
-<<<<<<< HEAD
 static inline int file_list_cpu(struct file *file)
 {
 #ifdef CONFIG_SMP
@@ -510,8 +506,6 @@ retry:
 	lg_global_unlock(&files_lglock);
 }
 
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 void __init files_init(unsigned long mempages)
 { 
 	unsigned long n;
@@ -527,9 +521,6 @@ void __init files_init(unsigned long mempages)
 	n = (mempages * (PAGE_SIZE / 1024)) / 10;
 	files_stat.max_files = max_t(unsigned long, n, NR_FILE);
 	files_defer_init();
-<<<<<<< HEAD
 	lg_lock_init(&files_lglock, "files_lglock");
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	percpu_counter_init(&nr_files, 0);
 } 

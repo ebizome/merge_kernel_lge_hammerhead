@@ -1265,17 +1265,13 @@ static long __tun_chr_ioctl(struct file *file, unsigned int cmd,
 	int vnet_hdr_sz;
 	int ret;
 
-<<<<<<< HEAD
 #ifdef CONFIG_ANDROID_PARANOID_NETWORK
 	if (cmd != TUNGETIFF && !capable(CAP_NET_ADMIN)) {
 		return -EPERM;
 	}
 #endif
 
-	if (cmd == TUNSETIFF || _IOC_TYPE(cmd) == 0x89)
-=======
 	if (cmd == TUNSETIFF || _IOC_TYPE(cmd) == 0x89) {
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 		if (copy_from_user(&ifr, argp, ifreq_len))
 			return -EFAULT;
 	} else {

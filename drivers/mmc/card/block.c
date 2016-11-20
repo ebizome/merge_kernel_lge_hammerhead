@@ -1592,10 +1592,7 @@ static int mmc_blk_err_check(struct mmc_card *card,
 	 */
 	if (!mmc_host_is_spi(card->host) && rq_data_dir(req) != READ) {
 		u32 status;
-<<<<<<< HEAD
 		unsigned long timeout;
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 		/* Check stop command response */
 		if (brq->stop.resp[0] & R1_ERROR) {
@@ -1605,10 +1602,7 @@ static int mmc_blk_err_check(struct mmc_card *card,
 			gen_err = 1;
 		}
 
-<<<<<<< HEAD
 		timeout = jiffies + msecs_to_jiffies(MMC_BLK_TIMEOUT_MS);
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 		do {
 			int err = get_card_status(card, &status, 5);
 			if (err) {
@@ -1624,7 +1618,6 @@ static int mmc_blk_err_check(struct mmc_card *card,
 				gen_err = 1;
 			}
 
-<<<<<<< HEAD
 			/* Timeout if the device never becomes ready for data
 			 * and never leaves the program state.
 			 */
@@ -1635,8 +1628,6 @@ static int mmc_blk_err_check(struct mmc_card *card,
 
 				return MMC_BLK_CMD_ERR;
 			}
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 			/*
 			 * Some cards mishandle the status bits,
 			 * so make sure to check both the busy
@@ -1648,11 +1639,7 @@ static int mmc_blk_err_check(struct mmc_card *card,
 
 	/* if general error occurs, retry the write operation. */
 	if (gen_err) {
-<<<<<<< HEAD
-		pr_warn("%s: retrying write for general error\n",
-=======
 		pr_warning("%s: retrying write for general error\n",
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 				req->rq_disk->disk_name);
 		return MMC_BLK_RETRY;
 	}
@@ -2777,11 +2764,7 @@ static int mmc_blk_issue_rq(struct mmc_queue *mq, struct request *req)
 		if (card->host->areq)
 			mmc_blk_issue_rw_rq(mq, NULL);
 		if (req->cmd_flags & REQ_SECURE &&
-<<<<<<< HEAD
 			!(card->quirks & MMC_QUIRK_SEC_ERASE_TRIM_BROKEN)) {
-=======
-			!(card->quirks & MMC_QUIRK_SEC_ERASE_TRIM_BROKEN))
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 			ret = mmc_blk_issue_secdiscard_rq(mq, req);
 			if (card->quirks & MMC_QUIRK_BLK_NEED_DUMMY_READ) {
 				/*
@@ -3166,10 +3149,7 @@ force_ro_fail:
 #define CID_MANFID_TOSHIBA	0x11
 #define CID_MANFID_MICRON	0x13
 #define CID_MANFID_SAMSUNG	0x15
-<<<<<<< HEAD
 #define CID_MANFID_SANDISK_SEM	0x45
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 
 static const struct mmc_fixup blk_fixups[] =
 {
@@ -3206,13 +3186,10 @@ static const struct mmc_fixup blk_fixups[] =
 	MMC_FIXUP(CID_NAME_ANY, CID_MANFID_MICRON, 0x200, add_quirk_mmc,
 		  MMC_QUIRK_LONG_READ_TIME),
 
-<<<<<<< HEAD
 	/* Some INAND MCP devices advertise incorrect timeout values */
 	MMC_FIXUP("SEM04G", 0x45, CID_OEMID_ANY, add_quirk_mmc,
 		  MMC_QUIRK_INAND_DATA_TIMEOUT),
 
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	/*
 	 * On these Samsung MoviNAND parts, performing secure erase or
 	 * secure trim can result in unrecoverable corruption due to a
@@ -3235,7 +3212,6 @@ static const struct mmc_fixup blk_fixups[] =
 	MMC_FIXUP("VZL00M", CID_MANFID_SAMSUNG, CID_OEMID_ANY, add_quirk_mmc,
 		  MMC_QUIRK_SEC_ERASE_TRIM_BROKEN),
 
-<<<<<<< HEAD
 	/*
 	 * Some devices have issues that requires dummy read
 	 */
@@ -3244,8 +3220,6 @@ static const struct mmc_fixup blk_fixups[] =
 	MMC_FIXUP("SEM32G", CID_MANFID_SANDISK_SEM, CID_OEMID_ANY, add_quirk_mmc,
 		  MMC_QUIRK_BLK_NEED_DUMMY_READ),
 
-=======
->>>>>>> 8d1988f838a95e836342b505398d38b223181f17
 	END_FIXUP
 };
 
